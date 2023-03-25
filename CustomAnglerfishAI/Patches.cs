@@ -23,6 +23,9 @@ namespace CustomAnglerfishAI
 		/// public static int consumeShipCrushDelay = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Consume Ship Crush Delay");
 		public static bool deaf = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Deaf");
 		public static bool mute = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Mute");
+		public static bool meteorsHurt = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
+
+		public static bool meteorLaunchingOn = CustomAnglerfishAI.Instance.ModHelper.Interaction.ModExists("12090113.MeteorLaunching");
 
 		[HarmonyPrefix]
 		[HarmonyPatch(typeof(AnglerfishController), nameof(AnglerfishController.UpdateMovement))]
@@ -64,15 +67,14 @@ namespace CustomAnglerfishAI
 		[HarmonyPatch(typeof(MeteorController), nameof(MeteorController.OnCollisionEnter))]
 		public static void OnCollisionEnter(MeteorController __instance, Collision collision)
 		{
-			var meteorLaunchingOn = CustomAnglerfishAI.Instance.ModHelper.Interaction.ModExists("12090113.MeteorLaunching");
-			if (meteorLaunchingOn)
+			if (meteorLaunchingOn && meteorsHurt)
 			{
-				CustomAnglerfishAI.Instance.DebugLog("DETECTED meteor launching mod");
+				/// CustomAnglerfishAI.Instance.DebugLog("DETECTED meteor launching mod");
 				/// CustomAnglerfishAI.Instance.DebugLog("METEOR HIT: " + collision.transform.name);
 				if (collision.gameObject.name == "Anglerfish_Body")
 				{
 					AnglerfishController angler = collision.gameObject.GetComponent<AnglerfishController>();
-					CustomAnglerfishAI.Instance.DebugLog(angler != null ? "angler controller FOUND" : "no angler controller found");
+					/// CustomAnglerfishAI.Instance.DebugLog(angler != null ? "angler controller FOUND" : "no angler controller found");
 					angler.ChangeState(AnglerfishController.AnglerState.Stunned);
 					var colliderName = collision.collider.name;
 					switch (colliderName)

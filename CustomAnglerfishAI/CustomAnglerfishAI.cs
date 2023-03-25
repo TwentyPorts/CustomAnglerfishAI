@@ -39,6 +39,7 @@ namespace CustomAnglerfishAI
 			/// AnglerPatches.consumeShipCrushDelay = config.GetSettingsValue<int>("Consume Ship Crush Delay");
 			AnglerPatches.deaf = config.GetSettingsValue<bool>("Deaf");
 			AnglerPatches.mute = config.GetSettingsValue<bool>("Mute");
+			AnglerPatches.meteorsHurt = config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
 		}
 
 		internal void DebugLog(string str)
