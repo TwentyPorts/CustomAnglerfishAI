@@ -2,7 +2,7 @@
 
 An Outer Wilds mod which allows you to customize anglerfish AI in the mod options:
 
-![image](https://user-images.githubusercontent.com/70867864/227690305-8f398cbe-a328-4a85-8d04-c86dc16e8e33.png)
+![image](https://user-images.githubusercontent.com/70867864/227744238-5fb2d390-2c39-4adc-b0bb-46523809c493.png)
 
 * Chase Speed - how fast anglerfish move when chasing you. Default is 42.
 * Investigate Speed - how fast anglerfish move when investigating a sound. Default is 20.
