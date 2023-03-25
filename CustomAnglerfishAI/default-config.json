@@ -8,6 +8,16 @@
         "Quick Turn Speed": 360,
         "Deaf": false,
         "Mute": false,
+        "Spin Axis": {
+            "type": "selector",
+            "value": "None",
+            "options": [
+                "None",
+                "X",
+                "Y",
+                "Z"
+            ]
+        },
         "Meteor Launching Mod Integration": true
     }
 }

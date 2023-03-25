@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Epic.OnlineServices;
+using HarmonyLib;
 using OWML.Common;
 using OWML.ModHelper;
 using System.Reflection;
@@ -17,15 +18,9 @@ namespace CustomAnglerfishAI
 		private void Start()
 		{
 			// Starting here, you'll have access to OWML's mod helper.
-			ModHelper.Console.WriteLine($"My mod {nameof(CustomAnglerfishAI)} is loaded!", MessageType.Success);
+			ModHelper.Console.WriteLine($"Mod {nameof(CustomAnglerfishAI)} is loaded!", MessageType.Success);
+			AnglerPatches.meteorLaunchingOn = ModHelper.Interaction.ModExists("12090113.MeteorLaunching");
 			Patches.ApplyPatches();
-
-			// Example of accessing game code.
-			LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
-			{
-				if (loadScene != OWScene.SolarSystem) return;
-				ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
-			};
 		}
 		public override void Configure(IModConfig config)
 		{
@@ -39,6 +34,7 @@ namespace CustomAnglerfishAI
 			/// AnglerPatches.consumeShipCrushDelay = config.GetSettingsValue<int>("Consume Ship Crush Delay");
 			AnglerPatches.deaf = config.GetSettingsValue<bool>("Deaf");
 			AnglerPatches.mute = config.GetSettingsValue<bool>("Mute");
+			AnglerPatches.spinAxis = config.GetSettingsValue<string>("Spin Axis");
 			AnglerPatches.meteorsHurt = config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
 		}
 
