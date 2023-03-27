@@ -2,7 +2,7 @@
 
 An Outer Wilds mod which allows you to customize anglerfish AI in the mod options:
 
-![image](https://user-images.githubusercontent.com/70867864/227744238-5fb2d390-2c39-4adc-b0bb-46523809c493.png)
+![image](https://user-images.githubusercontent.com/70867864/227853785-df8dfa8e-abb0-4900-bca2-543af9b64e41.png)
 
 * Size (%) - how big anglerfish are. Default is 100. I wouldn't recommend going too high...
 * Chase Speed - how fast anglerfish move when chasing you. Default is 42.
