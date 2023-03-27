@@ -15,9 +15,7 @@ namespace CustomAnglerfishAI
 	public static class AnglerPatches
 	{
 		public static float size = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Size (%)")/100f;
-		/// public static int acceleration = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Acceleration");
-		public static int chaseSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Chase Speed");
-		public static int investigateSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Investigate Speed");
+		public static float speed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Speed (%)")/100f;
 		public static int turnSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Turn Speed");
 		public static int quickTurnSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Quick Turn Speed");
 		/// public static int consumeDeathDelay = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Consume Death Delay");
@@ -36,8 +34,9 @@ namespace CustomAnglerfishAI
 		{
 			__instance.transform.localScale = new Vector3(size, size, size);
 			/// __instance._acceleration = acceleration;
-			__instance._chaseSpeed = chaseSpeed;
-			__instance._investigateSpeed = investigateSpeed;
+			__instance._chaseSpeed = 42 * speed;
+			__instance._investigateSpeed = 20 * speed;
+			__instance._acceleration = 2 * speed;
 			__instance._turnSpeed = turnSpeed;
 			__instance._quickTurnSpeed = quickTurnSpeed;
 			/// __instance._consumeDeathDelay = consumeDeathDelay;

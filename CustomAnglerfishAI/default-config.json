@@ -3,8 +3,7 @@
   "enabled": true,
   "settings": {
         "Size (%)": 100,
-        "Chase Speed": 42,
-        "Investigate Speed": 20,
+        "Speed (%)": 100,
         "Turn Speed": 180,
         "Quick Turn Speed": 360,
         "Deaf": false,

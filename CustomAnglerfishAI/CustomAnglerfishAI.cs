@@ -26,9 +26,7 @@ namespace CustomAnglerfishAI
 		{
 			DebugLog("config changed; re-applying patches");
 			AnglerPatches.size = config.GetSettingsValue<int>("Size (%)")/100f;
-			/// AnglerPatches.acceleration = config.GetSettingsValue<int>("Acceleration");
-			AnglerPatches.chaseSpeed = config.GetSettingsValue<int>("Chase Speed");
-			AnglerPatches.investigateSpeed = config.GetSettingsValue<int>("Investigate Speed");
+			AnglerPatches.speed = config.GetSettingsValue<int>("Speed (%)")/100f;
 			AnglerPatches.turnSpeed = config.GetSettingsValue<int>("Turn Speed");
 			AnglerPatches.quickTurnSpeed = config.GetSettingsValue<int>("Quick Turn Speed");
 			/// AnglerPatches.consumeDeathDelay = config.GetSettingsValue<int>("Consume Death Delay");
