@@ -15,9 +15,9 @@ namespace CustomAnglerfishAI
 	public static class AnglerPatches
 	{
 		public static float size = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Size (%)")/100f;
-		public static float speed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Speed (%)")/100f;
-		public static int turnSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Turn Speed");
-		public static int quickTurnSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Quick Turn Speed");
+		public static float moveSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Move Speed (%)")/100f;
+		public static float turnSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Turn Speed (%)")/100f;
+		public static float distance = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Distance (%)")/100f;
 		/// public static int consumeDeathDelay = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Consume Death Delay");
 		/// public static int consumeShipCrushDelay = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Consume Ship Crush Delay");
 		public static bool deaf = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Deaf");
@@ -33,29 +33,33 @@ namespace CustomAnglerfishAI
 		public static void UpdateMovement(AnglerfishController __instance)
 		{
 			__instance.transform.localScale = new Vector3(size, size, size);
-			/// __instance._acceleration = acceleration;
-			__instance._chaseSpeed = 42 * speed;
-			__instance._investigateSpeed = 20 * speed;
-			__instance._acceleration = 2 * speed;
-			__instance._turnSpeed = turnSpeed;
-			__instance._quickTurnSpeed = quickTurnSpeed;
+			CustomAnglerfishAI.Instance.DebugLog("current chase spd: " + __instance._chaseSpeed + " | invest spd: " + __instance._investigateSpeed + " | accel: " + __instance._acceleration + " | turn spd: " + __instance._turnSpeed + " | quick turn spd: " + __instance._quickTurnSpeed + " | arrive dist: " + __instance._arrivalDistance + " | pursue dist: " + __instance._pursueDistance + " | escape dist: " + __instance._escapeDistance);
+			__instance._chaseSpeed = 75 * moveSpeed; // default value * multiplier
+			__instance._investigateSpeed = 20 * moveSpeed;
+			__instance._acceleration = 40 * moveSpeed;
+			__instance._turnSpeed = 90 * turnSpeed;
+			__instance._quickTurnSpeed = 360 * turnSpeed;
+			__instance._arrivalDistance = 100 * distance;
+			__instance._pursueDistance = 300 * distance;
+			__instance._escapeDistance = 400 * distance;
 			/// __instance._consumeDeathDelay = consumeDeathDelay;
 			/// __instance._consumeShipCrushDelay = consumeShipCrushDelay;
+			
 			if (spinAxis == "None")
 			{
 				// do nothing
 			}
 			else if (spinAxis == "X")
 			{
-				__instance.transform.Rotate(quickTurnSpeed * Time.deltaTime, 0, 0);
+				__instance.transform.Rotate(__instance._quickTurnSpeed * Time.deltaTime, 0, 0);
 			}
 			else if(spinAxis == "Y")
 			{
-				__instance.transform.Rotate(0, quickTurnSpeed * Time.deltaTime, 0);
+				__instance.transform.Rotate(0, __instance._quickTurnSpeed * Time.deltaTime, 0);
 			}
 			else if (spinAxis == "Z")
 			{
-				__instance.transform.Rotate(0, 0, quickTurnSpeed * Time.deltaTime);
+				__instance.transform.Rotate(0, 0, __instance._quickTurnSpeed * Time.deltaTime);
 			}
 		}
 
@@ -90,7 +94,7 @@ namespace CustomAnglerfishAI
 		[HarmonyPatch(typeof(AnglerfishAudioController), nameof(AnglerfishAudioController.OnChangeAnglerState))]
 		public static bool OnChangeAnglerState(AnglerfishAudioController __instance)
 		{
-			__instance._loopSource.mute = true;
+			if(mute) __instance._loopSource.mute = true;
 			/// CustomAnglerfishAI.Instance.DebugLog("muted angler audio");
 			return !mute;
 		}

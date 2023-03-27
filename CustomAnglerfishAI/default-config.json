@@ -3,9 +3,9 @@
   "enabled": true,
   "settings": {
         "Size (%)": 100,
-        "Speed (%)": 100,
-        "Turn Speed": 180,
-        "Quick Turn Speed": 360,
+        "Move Speed (%)": 100,
+        "Turn Speed (%)": 100,
+        "Distance (%)": 100,
         "Deaf": false,
         "Mute": false,
         "Afraid": false,
