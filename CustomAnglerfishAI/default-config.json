@@ -2,12 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/ow-mods/owml/master/schemas/config_schema.json",
   "enabled": true,
   "settings": {
+        "Size (%)": 100,
         "Chase Speed": 42,
         "Investigate Speed": 20,
         "Turn Speed": 180,
         "Quick Turn Speed": 360,
         "Deaf": false,
         "Mute": false,
+        "Afraid": false,
         "Spin Axis": {
             "type": "selector",
             "value": "None",

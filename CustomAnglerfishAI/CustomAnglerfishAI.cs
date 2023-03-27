@@ -25,6 +25,7 @@ namespace CustomAnglerfishAI
 		public override void Configure(IModConfig config)
 		{
 			DebugLog("config changed; re-applying patches");
+			AnglerPatches.size = config.GetSettingsValue<int>("Size (%)")/100f;
 			/// AnglerPatches.acceleration = config.GetSettingsValue<int>("Acceleration");
 			AnglerPatches.chaseSpeed = config.GetSettingsValue<int>("Chase Speed");
 			AnglerPatches.investigateSpeed = config.GetSettingsValue<int>("Investigate Speed");
@@ -34,6 +35,7 @@ namespace CustomAnglerfishAI
 			/// AnglerPatches.consumeShipCrushDelay = config.GetSettingsValue<int>("Consume Ship Crush Delay");
 			AnglerPatches.deaf = config.GetSettingsValue<bool>("Deaf");
 			AnglerPatches.mute = config.GetSettingsValue<bool>("Mute");
+			AnglerPatches.afraid = config.GetSettingsValue<bool>("Afraid");
 			AnglerPatches.spinAxis = config.GetSettingsValue<string>("Spin Axis");
 			AnglerPatches.meteorsHurt = config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
 		}

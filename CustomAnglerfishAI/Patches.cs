@@ -14,6 +14,7 @@ namespace CustomAnglerfishAI
 	[HarmonyPatch]
 	public static class AnglerPatches
 	{
+		public static float size = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Size (%)")/100f;
 		/// public static int acceleration = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Acceleration");
 		public static int chaseSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Chase Speed");
 		public static int investigateSpeed = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Investigate Speed");
@@ -23,6 +24,7 @@ namespace CustomAnglerfishAI
 		/// public static int consumeShipCrushDelay = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<int>("Consume Ship Crush Delay");
 		public static bool deaf = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Deaf");
 		public static bool mute = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Mute");
+		public static bool afraid = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Afraid");
 		public static string spinAxis = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<string>("Spin Axis");
 		public static bool meteorsHurt = CustomAnglerfishAI.Instance.ModHelper.Config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
 
@@ -32,6 +34,7 @@ namespace CustomAnglerfishAI
 		[HarmonyPatch(typeof(AnglerfishController), nameof(AnglerfishController.UpdateMovement))]
 		public static void UpdateMovement(AnglerfishController __instance)
 		{
+			__instance.transform.localScale = new Vector3(size, size, size);
 			/// __instance._acceleration = acceleration;
 			__instance._chaseSpeed = chaseSpeed;
 			__instance._investigateSpeed = investigateSpeed;
@@ -54,6 +57,26 @@ namespace CustomAnglerfishAI
 			else if (spinAxis == "Z")
 			{
 				__instance.transform.Rotate(0, 0, quickTurnSpeed * Time.deltaTime);
+			}
+		}
+
+		[HarmonyPrefix]
+		[HarmonyPatch(typeof(AnglerfishController), nameof(AnglerfishController.RotateTowardsTarget))]
+		public static void RotateTowardsTarget(AnglerfishController __instance, ref Vector3 targetPos)
+		{
+			if (afraid && targetPos.Equals(__instance._targetPos))
+			{
+				targetPos = 2 * __instance._anglerBody.GetPosition() - targetPos;
+			}
+		}
+
+		[HarmonyPrefix]
+		[HarmonyPatch(typeof(AnglerfishController), nameof(AnglerfishController.MoveTowardsTarget))]
+		public static void MoveTowardsTarget(AnglerfishController __instance, ref Vector3 targetPos)
+		{
+			if (afraid && targetPos.Equals(__instance._targetPos))
+			{
+				targetPos = 2 * __instance._anglerBody.GetPosition() - targetPos;
 			}
 		}
 
