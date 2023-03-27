@@ -9,6 +9,7 @@
         "Deaf": false,
         "Mute": false,
         "Afraid": false,
+        "Rainbow Lights": false,
         "Spin Axis": {
             "type": "selector",
             "value": "None",

@@ -1,5 +1,4 @@
-﻿using Epic.OnlineServices;
-using HarmonyLib;
+﻿using HarmonyLib;
 using OWML.Common;
 using OWML.ModHelper;
 using System.Reflection;
@@ -34,8 +33,10 @@ namespace CustomAnglerfishAI
 			AnglerPatches.deaf = config.GetSettingsValue<bool>("Deaf");
 			AnglerPatches.mute = config.GetSettingsValue<bool>("Mute");
 			AnglerPatches.afraid = config.GetSettingsValue<bool>("Afraid");
+			AnglerPatches.rainbowLights = config.GetSettingsValue<bool>("Rainbow Lights");
 			AnglerPatches.spinAxis = config.GetSettingsValue<string>("Spin Axis");
 			AnglerPatches.meteorsHurt = config.GetSettingsValue<bool>("Meteor Launching Mod Integration");
+			AnglerPatches.configChangedUpdateMovement = true;
 		}
 
 		internal void DebugLog(string str)

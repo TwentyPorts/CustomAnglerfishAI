@@ -11,6 +11,7 @@
 * Deaf - anglerfish no longer hear you, making Dark Bramble a lot more safe :). Though if you're already being chased, turning this on won't stop them from chasing you.
 * Mute - anglerfish no longer make sounds, becoming the perfect ambush predator (besides the big glowing light).
 * Afraid - anglerfish flee from your intimidating presence.
+* Rainbow - anglerfish lights now flash all the colors of the rainbow!
 * Spin Axis - spins the anglerfish 'round an axis. Spin speed depends on Quick Turn Speed. *Default is None.*
   * Values are X, Y, or Z axis.
 * [Meteor Launching Mod](https://outerwildsmods.com/mods/meteorlaunching/) Integration - skill-based combat! (kind of.) Hitting an anglerfish with a meteor will stun them temporarily, depending on where you hit them:
