@@ -18,3 +18,7 @@ An Outer Wilds mod which allows you to customize anglerfish AI in the mod option
   * Body - 1 second
   * Left/Right Cheek - 2 seconds
   * Mouth Floor - 3 seconds
+
+Short demo: https://youtu.be/0vXy7Zfb9sE
+
+Mod page: https://outerwildsmods.com/mods/customizableanglerfishai/
