@@ -1,6 +1,6 @@
 # CustomAnglerfishAI
 
-**Bend anglerfish to your will through a variety of convenient options.**
+*An Outer Wilds mod which lets you control how anglerfish behave.*
 
 ![image](https://user-images.githubusercontent.com/70867864/227853785-df8dfa8e-abb0-4900-bca2-543af9b64e41.png)
 
